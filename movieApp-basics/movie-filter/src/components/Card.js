@@ -22,7 +22,7 @@ const movieCard = ({ movieData }) => {
                   
                 </div>
                 <div className="img-container">
-                <img src={item.image} alt="image" srcset="" width={350}/>
+                <img src={item.image} alt="img" srcset="" width={350} height={200}/>
                 <div className="card-footer">
 
                   <button>Watch Now</button>
