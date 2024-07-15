@@ -1,0 +1,77 @@
+const List = [
+  {
+    id: 1,
+    image: "./img/avengers.jpg",
+    name: "The Avengers",
+    category: ["fantasy", "power", "action", "thriller"],
+    rating: "8.9/10",
+    description: "The Official Blockbuster Movie of all times ",
+  },
+  {
+    id: 1,
+    image: "./img/ready.jpg",
+    name: "Ready Player One",
+    category: ["fantasy", "gaming", "violence", "reality"],
+
+    rating: "7.8/10",
+    description: "The Official Blockbuster Movie of all times ",
+  },
+  {
+    id: 1,
+    image: "./img/exists.jpg",
+    name: "Exists",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 1,
+    image: "./img/exists.jpg",
+    name: "Exists",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 1,
+    image: "./img/exists.jpg",
+    name: "Exists",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 1,
+    image: "./img/exists.jpg",
+    name: "Exists",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 1,
+    image: "./img/exists.jpg",
+    name: "Exists",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 1,
+    image: "./img/exists.jpg",
+    name: "Exists",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 1,
+    image: "./img/exists.jpg",
+    name: "Exists",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+];
+
+export default List;
