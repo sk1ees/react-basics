@@ -1,11 +1,12 @@
-import React from 'react'
-import Restaurant from './components/basics/Restaurant'
+import React from "react";
+import Restaurant from "./components/basics/Restaurant";
+import UseState from "./components/Hooks/useState";
 const App = () => {
   return (
     <>
-     <Restaurant/>
+      <UseState />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
