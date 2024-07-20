@@ -21,22 +21,26 @@ function App() {
       setMode("dark")
       document.body.style.backgroundColor = "#212529"
       showAlert(" ✅ DarkMode has been enabled", "success")
+      document.title = "!! Dark Mode Enabled !!"
+      setInterval(() => {
+        document.title = "TextUtils - Home"
+      }, 1000)
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white"
       showAlert(" ❌ LightMode has been enabled", "warning")
+      document.title = "!! Light Mode Enabled !!"
+      setInterval(() => {
+        document.title = "TextUtils - Home"
+      }, 1500)
     }
   }
 
-  const [theme, setTheme] = useState("mode");
 
-  const themeMode = () => {
-    setTheme("warning");
-  }
   return (
     <>
 
-      <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode} themeMode={themeMode} />
+      <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
       <TextForm showAlert={showAlert} heading="Enter the text to utilize" mode={mode} toggleMode={toggleMode} />
       {/* <About /> */}

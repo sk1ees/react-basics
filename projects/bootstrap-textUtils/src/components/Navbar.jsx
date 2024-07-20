@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from "prop-types"
 const Navbar = (props) => {
     const textToggle = props.mode == "light" ? "black" : "light"
+
     return (
         <>
             <nav className={`navbar navbar-expand-lg navbar-${props.mode}  bg-${props.mode}`}>
@@ -21,17 +22,19 @@ const Navbar = (props) => {
 
 
                         </ul>
-                        <select class="form me-4 rounded-5 px-2" aria-label="Default select example">
-                            <option selected>Select Theme</option>
+                        <select className="form me-4 rounded-5 px-2" aria-label="Default select example" defaultValue={""} onChange={(e) => {
+                            themeGet(e)
+                        }}>
+                            <option defaultValue={""}>Select Theme</option>
                             <option value="cyberpunk">Cyberpunk</option>
                             <option value="mood">Mood</option>
                             <option value="zen">Zen Mode</option>
                         </select>
                         <form className="d-flex" role="search">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode} />
-                                <label class={`form-check-label text-${textToggle
-                                    }`} for="flexSwitchCheckDefault">{props.mode} mode</label>
+                            <div className="form-check form-switch">
+                                <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode} />
+                                <label className={`form-check-label text-${textToggle
+                                    }`} htmlFor="flexSwitchCheckDefault">{props.mode} mode</label>
                             </div>
                         </form>
                     </div>
