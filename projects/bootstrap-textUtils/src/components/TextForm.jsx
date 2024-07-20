@@ -8,7 +8,7 @@ const TextForm = (props) => {
     // setText("Text Below...")
     const alertShow = (textAlert) => {
         text == "" ? props.showAlert(`❌ Please provide the text to perform the actions!`, "warning") : props.showAlert(`  ${textAlert}`, "success")
-        
+
     }
 
     const handleUpClick = () => {
@@ -63,7 +63,7 @@ const TextForm = (props) => {
             <div className="container">
                 <h3 className={`text-${textToggle}`}>Summary</h3>
                 <div className="d-flex gap-2 mt-4">
-                    <p className={`text-${textToggle}`}>{text.split(' ').length - 1} words </p>
+                    <p className={`text-${textToggle}`}>{text.split(' ').filter((element) => { return element.length !== 0 }).length} words </p>
                     <p className={`text-${textToggle}`}>{text.length} characters </p>
 
                 </div>

@@ -5,15 +5,16 @@ const Alert = (props) => {
 
 
     return (
-        props.alert &&
-        <>
-            <div className={`alert alert-${props.alert.type}`} role="alert">
-                <strong>
+        <div style={{ height: "40px" }}>
 
-                     {props.alert.msg}
-                </strong>
-            </div>
-        </>
+            {props.alert &&
+                <div className={`alert alert-${props.alert.type}`} role="alert">
+                    <strong>
+
+                        {props.alert.msg}
+                    </strong>
+                </div>}
+        </div>
     )
 }
 
