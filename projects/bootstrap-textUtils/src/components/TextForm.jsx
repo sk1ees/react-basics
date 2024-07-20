@@ -63,7 +63,7 @@ const TextForm = (props) => {
             <div className="container">
                 <h3 className={`text-${textToggle}`}>Summary</h3>
                 <div className="d-flex gap-2 mt-4">
-                    <p className={`text-${textToggle}`}>{text.split(' ').filter((element) => { return element.length !== 0 }).length} words </p>
+                    <p className={`text-${textToggle}`}>{text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} words </p>
                     <p className={`text-${textToggle}`}>{text.length} characters </p>
 
                 </div>
