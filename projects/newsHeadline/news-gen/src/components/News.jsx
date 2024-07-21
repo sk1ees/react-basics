@@ -178,35 +178,87 @@ export class News extends Component {
         this.state = {
             getData: this.getData,
             loading: false,
+            page: 1,
+            totalResults: 0,
+            error: "",
         }
     }
 
 
     async componentDidMount() {
-        let url = "https://newsapi.org/v2/everything?q=apple&from=2024-07-19&to=2024-07-19&sortBy=popularity&apiKey=e4b4a9c0ef604340990fffbbbc456d6b"
+        let url = `https://newsapi.org/v2/everything?q=gaming&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=4717f0cd05c946c7bee528d04dbb0ae5&pageSize=8&page=${this.state.page}`
+        let data = await fetch(url);
+        let parsedData = await data.json();
+
+        // console.log(parsedData.totalResults);
+        this.setState({ totalResults: Math.ceil(parsedData.totalResults / 8) })
+        this.setState({ getData: parsedData.articles })
+
+
+    }
+
+    handlePagePrevious = async () => {
+        let url = `https://newsapi.org/v2/everything?q=gaming&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=4717f0cd05c946c7bee528d04dbb0ae5&pageSize=8&page=${this.state.page - 1}`
         let data = await fetch(url);
         let parsedData = await data.json();
         console.log(parsedData);
         this.setState({ getData: parsedData.articles })
+        console.log("Next")
+        this.setState({ page: this.state.page - 1 })
+        this.setState({ totalResults: this.state.totalResults + 1 })
+
     }
+
+
+    handlePageNext = async () => {
+        let url = `https://newsapi.org/v2/everything?q=gaming&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=4717f0cd05c946c7bee528d04dbb0ae5&pageSize=8&page=${this.state.page + 1}`
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        console.log(parsedData);
+        this.setState({ getData: parsedData.articles })
+        console.log("Next")
+        this.setState({ page: this.state.page + 1 })
+        this.setState({ totalResults: this.state.totalResults - 1 })
+        { parsedData.message ? this.setState({ error: parsedData.message }) : "" }
+
+    }
+
+
     render() {
 
 
         return (
             <>
-                <h3 className='text-center mt-4'>NewsScenario -  Get Daily World News </h3>
+
+                <h3 className='text-center mt-4 '> <a href="/" className='text-decoration-none text-white'>NewsScenario -  Get Daily World News  </a></h3>
+
+
 
                 <div className=" d-flex justify-content-center flex-wrap gap-5 container-fluid mt-5 mb-5 ">
-                    {/* {console.log(this.state.getData)} */}
-                    {this.state.getData.map((items) => {
+                    {/* {console.log(this.parsedData.articles.url)} */}
+                    {this.state.getData != null ? this.state.getData.map((items) => {
                         // console.log(items)
                         return <div className="" key={items.url}>
-                            < NewsItems title={`${(items.title).slice(0, 50)}..`} description={`${items.description == null ? "click on the read more" : (items.description).slice(0, 80)}...`} urlImage={items.urlToImage == null ? "https://static.vecteezy.com/system/resources/thumbnails/004/216/831/original/3d-world-news-background-loop-free-video.jpg" : items.urlToImage} />
+                            < NewsItems title={`${(items.title).slice(0, 40)}..`} description={`${items.description == null ? "Well , there's no provided summary for this articles . Please Click on the Read More Button!" : (items.description).slice(0, 120)}...`} urlImage={items.urlToImage == null ? "https://static.vecteezy.com/system/resources/thumbnails/004/216/831/original/3d-world-news-background-loop-free-video.jpg" : items.urlToImage} urlRedirect={items.url} author={items.author != null ? `${(items.author).slice(0, 20)}` : "Anonymous"} />
                         </div>
-                    })}
+                    }) :
+                        <div className="container d-flex align-content-center justify-content-center">
+
+                            <div className="container m-5 text-center bg-danger rounded-3 text-white w-75 ">
+                                <p className='container p-4'>  {this.state.error}   </p>
+                            </div>
+                        </div>
+
+
+                    }
 
 
 
+                    <div className="container d-flex justify-content-between m-4 ">
+                        <button type="button" disabled={this.state.page <= 1} class="btn btn-dark ms-5 ps-3" onClick={this.handlePagePrevious}> &larr; Prev</button>
+                        <p>Total Articles Remaining: {this.state.totalResults}</p>
+                        <button type="button" class="btn btn-dark ms-5 pe-3" onClick={this.handlePageNext} disabled={this.state.getData == null} > Next &rarr;</button>
+                    </div>
                 </div>
             </>
         )
