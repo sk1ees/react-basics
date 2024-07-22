@@ -6,8 +6,9 @@ export class App extends Component {
   render() {
     return (
       <>
+      {/* navbar-component  */}
         <Navbar />
-
+      {/* news-component  */}
         <News />
 
 
