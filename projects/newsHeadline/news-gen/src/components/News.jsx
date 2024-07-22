@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NewsItems from './NewsItems'
-
+import Spinner from './Spinner';
 export class News extends Component {
     getData = [
         {
@@ -211,9 +211,12 @@ export class News extends Component {
 
 
     handlePageNext = async () => {
+        window.scroll(0,0)
         let url = `https://newsapi.org/v2/everything?q=gaming&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=4717f0cd05c946c7bee528d04dbb0ae5&pageSize=8&page=${this.state.page + 1}`
+        this.setState({loading: true})
         let data = await fetch(url);
         let parsedData = await data.json();
+        this.setState({loading: false})
         console.log(parsedData);
         this.setState({ getData: parsedData.articles })
         console.log("Next")
@@ -232,16 +235,16 @@ export class News extends Component {
 
                 <h3 className='text-center mt-4 '> <a href="/" className='text-decoration-none text-white'>NewsScenario -  Get Daily World News  </a></h3>
 
-
+                {this.state.loading&&<Spinner/>}
 
                 <div className=" d-flex justify-content-center flex-wrap gap-5 container-fluid mt-5 mb-5 ">
                     {/* {console.log(this.parsedData.articles.url)} */}
-                    {this.state.getData != null ? this.state.getData.map((items) => {
+                    {this.state.getData != null ? (!this.state.loading && this.state.getData.map((items) => {
                         // console.log(items)
                         return <div className="" key={items.url}>
                             < NewsItems title={`${(items.title).slice(0, 40)}..`} description={`${items.description == null ? "Well , there's no provided summary for this articles . Please Click on the Read More Button!" : (items.description).slice(0, 120)}...`} urlImage={items.urlToImage == null ? "https://static.vecteezy.com/system/resources/thumbnails/004/216/831/original/3d-world-news-background-loop-free-video.jpg" : items.urlToImage} urlRedirect={items.url} author={items.author != null ? `${(items.author).slice(0, 20)}` : "Anonymous"} />
                         </div>
-                    }) :
+                    })) :
                         <div className="container d-flex align-content-center justify-content-center">
 
                             <div className="container m-5 text-center bg-danger rounded-3 text-white w-75 ">
