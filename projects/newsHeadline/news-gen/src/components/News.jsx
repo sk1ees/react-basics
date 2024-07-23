@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import NewsItems from './NewsItems'
 import Spinner from './Spinner';
+import propTypes from 'prop-types'
+
 export class News extends Component {
     getData = [
         {
@@ -172,8 +174,17 @@ export class News extends Component {
             "publishedAt": "2024-07-20T11:50:39Z",
             "content": "Sign up for daily news updates from CleanTechnica on email. Or follow us on Google News!\r\nXiaomi, the world’s second largest smartphone maker, recently launched its electric sportscar, the Xiaomi SU7… [+7659 chars]"
         },]
-    constructor() {
-        super();
+        static defaultProps = {
+            category: "general"
+        }
+        static propTypes = {
+            category: propTypes.string,
+        }
+    capitalizeFirstLetter = (string) => {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    constructor(props) {
+        super(props);
         console.log("Hello ")
         this.state = {
             getData: this.getData,
@@ -182,40 +193,54 @@ export class News extends Component {
             totalResults: 0,
             error: "",
         }
+     {this.props.category == "general"? document.title = "NewsScenario - Get Daily News Everyday":document.title = `NewsScenario - ${this.capitalizeFirstLetter(this.props.category)}`;}
     }
 
 
     async componentDidMount() {
-        let url = `https://newsapi.org/v2/everything?q=gaming&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=4717f0cd05c946c7bee528d04dbb0ae5&pageSize=8&page=${this.state.page}`
+        this.props.setProgress(0);
+        let url = `https://newsapi.org/v2/everything?q=${this.props.category}&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=${this.props.apiKey}&pageSize=8&page=${this.state.page}`
+        this.setState({loading: true})
         let data = await fetch(url);
+        this.props.setProgress(30);
         let parsedData = await data.json();
+        this.props.setProgress(60);
+        this.setState({loading: false})
 
         // console.log(parsedData.totalResults);
         this.setState({ totalResults: Math.ceil(parsedData.totalResults / 8) })
         this.setState({ getData: parsedData.articles })
-
+        this.props.setProgress(100);
 
     }
 
     handlePagePrevious = async () => {
-        let url = `https://newsapi.org/v2/everything?q=gaming&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=4717f0cd05c946c7bee528d04dbb0ae5&pageSize=8&page=${this.state.page - 1}`
+        let url = `https://newsapi.org/v2/everything?q=${this.props.category}&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=${this.props.apiKey}&pageSize=8&page=${this.state.page - 1}`
+        this.setState({loading: true})
         let data = await fetch(url);
+        this.props.setProgress(30);
         let parsedData = await data.json();
+        this.props.setProgress(60);
+        this.setState({loading: false})
         console.log(parsedData);
         this.setState({ getData: parsedData.articles })
         console.log("Next")
         this.setState({ page: this.state.page - 1 })
         this.setState({ totalResults: this.state.totalResults + 1 })
+        this.props.setProgress(100);
 
     }
 
 
     handlePageNext = async () => {
+         this.props.setProgress(0);
         window.scroll(0,0)
-        let url = `https://newsapi.org/v2/everything?q=gaming&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=4717f0cd05c946c7bee528d04dbb0ae5&pageSize=8&page=${this.state.page + 1}`
+        let url = `https://newsapi.org/v2/everything?q=${this.props.category}&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=${this.props.apiKey}&pageSize=8&page=${this.state.page + 1}`
         this.setState({loading: true})
         let data = await fetch(url);
+        this.props.setProgress(30);
         let parsedData = await data.json();
+        this.props.setProgress(60);
         this.setState({loading: false})
         console.log(parsedData);
         this.setState({ getData: parsedData.articles })
@@ -223,7 +248,7 @@ export class News extends Component {
         this.setState({ page: this.state.page + 1 })
         this.setState({ totalResults: this.state.totalResults - 1 })
         { parsedData.message ? this.setState({ error: parsedData.message }) : "" }
-
+        this.props.setProgress(100);
     }
 
 
@@ -233,7 +258,7 @@ export class News extends Component {
         return (
             <>
 
-                <h3 className='text-center mt-4 '> <a href="/" className='text-decoration-none text-white'>NewsScenario -  Get Daily World News  </a></h3>
+                <h3 className='text-center mt-4 '> <a href="/" className='text-decoration-none text-white'>NewsScenario - {this.capitalizeFirstLetter(this.props.category)} World News  </a></h3>
 
                 {this.state.loading&&<Spinner/>}
 
