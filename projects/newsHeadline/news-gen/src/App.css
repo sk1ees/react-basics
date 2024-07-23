@@ -4,3 +4,8 @@ body {
   color: white;
 }
 
+#totalRemain {
+  text-align: center;
+  margin: auto;
+  padding: inherit,
+}

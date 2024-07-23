@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import NewsItems from './NewsItems'
 import Spinner from './Spinner';
 import propTypes from 'prop-types'
-
+import '../App.css'
 export class News extends Component {
     getData = [
         {
@@ -284,7 +284,7 @@ export class News extends Component {
 
                     <div className="container d-flex justify-content-between m-4 ">
                         <button type="button" disabled={this.state.page <= 1} class="btn btn-dark ms-5 ps-3" onClick={this.handlePagePrevious}> &larr; Prev</button>
-                        <p>Total Articles Remaining: {this.state.totalResults}</p>
+                        <p id='totalRemain'>Total Articles Remaining: {this.state.totalResults}</p>
                         <button type="button" class="btn btn-dark ms-5 pe-3" onClick={this.handlePageNext} disabled={this.state.getData == null} > Next &rarr;</button>
                     </div>
                 </div>
