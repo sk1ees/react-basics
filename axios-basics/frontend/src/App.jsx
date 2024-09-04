@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { useEffect } from "react";
+
 const App = () => {
   const [data, setData] = useState("frontend");
 
@@ -9,14 +9,10 @@ const App = () => {
     setData(response.data);
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
-
   return (
     <>
       <div>{data}</div>
-     
+      <button onClick={getData}>Change</button>
     </>
   );
 };
