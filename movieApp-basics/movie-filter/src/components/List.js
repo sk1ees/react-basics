@@ -1,0 +1,77 @@
+const List = [
+  {
+    id: 1,
+    image: "./img/avengers.jpg",
+    name: "The Avengers",
+    category: ["drama", "power", "action", "thriller"],
+    rating: "8.9/10",
+    description: "The Official Blockbuster Movie of all times ",
+  },
+  {
+    id: 2,
+    image: "./img/ready.jpg",
+    name: "Ready Player One",
+    category: ["fantasy", "gaming", "violence", "reality"],
+
+    rating: "7.8/10",
+    description: "The Official Blockbuster Movie of all times ",
+  },
+  {
+    id: 3,
+    image: "./img/exists.jpg",
+    name: "Exists",
+    category: ["violence", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 4,
+    image: "./img/bulbul.jpg",
+    name: "Bulbul",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 5,
+    image: "./img/cold-case.jpg",
+    name: "Cold Case",
+    category: ["mystery", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 6,
+    image: "./img/hereditary.jpg",
+    name: "Hereditary",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 7,
+    image: "./img/silence.jpg",
+    name: "The Silence",
+    category: ["fantasy", "horror", "dark", "thriller"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+  {
+    id: 8,
+    image: "./img/fast-charlie.jpg",
+    name: "Fast Charlie",
+    category: ["romance", "drama", "action", "thriller"],
+    rating: "6.6/10",
+    description: "Charlie Swift is a fixer with a problem...",
+  },
+  {
+    id: 9,
+    image: "./img/kuyang.jpg",
+    name: "Kuyang",
+    category: ["fantasy", "horror", "drama", "crime"],
+    rating: "7.2/10",
+    description: "The Legend is real! So is the Terror. ",
+  },
+];
+
+export default List;
