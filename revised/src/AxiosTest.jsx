@@ -7,7 +7,7 @@ const AxiosTest = () => {
   const [buttonText, setButtonText] = useState("Fetch the data!");
   const [data, setData] = useState([]);
   const getAxiosData = async () => {
-    const response = await axios.get("https://picsum.photos/v2/list");
+    const response = await axios.get("https://picsum.photos/v2/list?page=2&limit=100");
     setData(response.data);
     setButtonText("Data Scraped Succesfully!");
     console.log(data);
