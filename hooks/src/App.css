@@ -2,7 +2,6 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-
 }
 
 .logo {
@@ -32,7 +31,15 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-
+.container {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column ;
+  gap: 3vh;
+}
 .card {
   padding: 2em;
 }
