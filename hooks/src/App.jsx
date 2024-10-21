@@ -7,21 +7,23 @@ import ResizeWindow from "./components/ResizeWindow";
 import MultiComp from "./components/MultiComp";
 import Parent from "./context/Parent";
 import { ThemeContext } from "./main";
+import RefComp from "./components/RefComp";
 
 const App = () => {
-  const {theme , setTheme} = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
   return (
     <>
-      <div style={{ backgroundColor: theme === "light" ? "white" : "black" }}>
+      {/* <div style={{ backgroundColor: theme === "light" ? "white" : "black" }}>
         <Parent />
-      </div>
+      </div> */}
       {/* <Counter /> */}
       {/* <TimerComponent /> */}
       {/* <DataFetched /> */}
       {/* <ResizeWindow /> */}
       {/* <TimerTest /> */}
       {/* <ResizeWind /> */}
-      {/* <MultiComp  /> */}
+      {/* <MultiComp /> */}
+      <RefComp />
     </>
   );
 };
