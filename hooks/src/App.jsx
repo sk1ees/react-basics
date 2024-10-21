@@ -8,6 +8,7 @@ import MultiComp from "./components/MultiComp";
 import Parent from "./context/Parent";
 import { ThemeContext } from "./main";
 import RefComp from "./components/RefComp";
+import StopwatchRef from "./components/StopwatchRef";
 
 const App = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -24,6 +25,7 @@ const App = () => {
       {/* <ResizeWind /> */}
       {/* <MultiComp /> */}
       <RefComp />
+      <StopwatchRef />
     </>
   );
 };
