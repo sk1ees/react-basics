@@ -9,6 +9,9 @@ import Parent from "./context/Parent";
 import { ThemeContext } from "./main";
 import RefComp from "./components/RefComp";
 import StopwatchRef from "./components/StopwatchRef";
+import RefTest from "./components/RefTest";
+import ButtonColor from "./components/ButtonColor";
+import StopWatch from "./components/stopWatch";
 
 const App = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -24,8 +27,11 @@ const App = () => {
       {/* <TimerTest /> */}
       {/* <ResizeWind /> */}
       {/* <MultiComp /> */}
-      <RefComp />
-      <StopwatchRef />
+      {/* <RefComp />
+      <StopwatchRef /> */}
+      {/* <RefTest /> */}
+      {/* <ButtonColor /> */}
+      <StopWatch/>
     </>
   );
 };
