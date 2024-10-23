@@ -12,6 +12,7 @@ import StopwatchRef from "./components/StopwatchRef";
 import RefTest from "./components/RefTest";
 import ButtonColor from "./components/ButtonColor";
 import StopWatch from "./components/stopWatch";
+import FocusInput from "./components/FocusInput";
 
 const App = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -31,7 +32,8 @@ const App = () => {
       <StopwatchRef /> */}
       {/* <RefTest /> */}
       {/* <ButtonColor /> */}
-      <StopWatch/>
+      {/* <StopWatch/> */}
+      <FocusInput />
     </>
   );
 };
